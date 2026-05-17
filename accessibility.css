@@ -1,9 +1,636 @@
-.skip-to-content {
-  position: absolute;
-  left: 16px;
-  top: -80px;
-  background: var(--primary);
-  color: white;
-  padding: 12px 18px;
+/* ============================================
+   ACCESIBILIDAD AAA — accessibility.css
+   WCAG 2.1 Nivel AAA + modos daltónicos
+   ============================================
+
+   MODOS DISPONIBLES (clases en <html>):
+   - .a11y-large-text        → texto grande
+   - .a11y-dyslexia          → fuente dislexia
+   - .a11y-high-contrast     → alto contraste
+   - .a11y-reduce-motion     → sin animaciones
+   - .a11y-deuteranopia      → daltonismo rojo-verde (más común)
+   - .a11y-protanopia        → daltonismo sin rojo
+   - .a11y-tritanopia        → daltonismo azul-amarillo
+   - .a11y-monochrome        → escala de grises total
+   - .a11y-focus-visible     → foco de teclado muy visible
+   ============================================ */
+
+/* ============================================
+   1. FOCUS VISIBLE UNIVERSAL (AAA base)
+   Todo elemento interactivo debe tener foco visible
+   ============================================ */
+*:focus {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
 }
-.skip-to-content:focus { top: 16px; }
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(66, 101, 0, 0.25);
+}
+
+/* ============================================
+   2. SKIP TO CONTENT (AAA 2.4.1)
+   Permite saltar la navegación con teclado
+   ============================================ */
+.skip-to-content {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 99999;
+  background: var(--primary);
+  color: var(--on-primary);
+  padding: 12px 24px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: top 0.2s;
+  outline: none;
+}
+
+.skip-to-content:focus {
+  top: 16px;
+  outline: 3px solid var(--on-primary);
+  outline-offset: 3px;
+}
+
+/* ============================================
+   3. PANEL DE ACCESIBILIDAD (flotante)
+   ============================================ */
+.a11y-panel-toggle {
+  position: fixed;
+  bottom: 80px;
+  left: 16px;
+  z-index: 9000;
+  width: 48px;
+  height: 48px;
+  background: var(--inverse-surface);
+  color: var(--surface);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+  transition: background 0.15s, transform 0.1s;
+}
+
+.a11y-panel-toggle:hover {
+  background: var(--primary);
+}
+
+.a11y-panel-toggle:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
+}
+
+.a11y-panel-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Panel contenedor */
+.a11y-panel {
+  position: fixed;
+  bottom: 136px;
+  left: 16px;
+  z-index: 8999;
+  width: 300px;
+  background: var(--inverse-surface);
+  color: var(--surface);
+  box-shadow: 12px 12px 0 rgba(0,0,0,0.35);
+  outline: 1px solid rgba(248,246,239,0.12);
+  transform: translateX(-340px);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.a11y-panel.open {
+  transform: translateX(0);
+}
+
+.a11y-panel-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(248,246,239,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.a11y-panel-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(248,246,239,0.9);
+}
+
+.a11y-panel-close {
+  background: none;
+  border: none;
+  color: rgba(248,246,239,0.5);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+
+.a11y-panel-close:hover { color: var(--primary-container); }
+
+/* Secciones del panel */
+.a11y-section {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(248,246,239,0.07);
+}
+
+.a11y-section-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(248,246,239,0.4);
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* Botones de opción */
+.a11y-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.a11y-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(248,246,239,0.05);
+  border: 1px solid rgba(248,246,239,0.1);
+  color: rgba(248,246,239,0.85);
+  cursor: pointer;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+  width: 100%;
+}
+
+.a11y-btn:hover {
+  background: rgba(248,246,239,0.1);
+  border-color: rgba(248,246,239,0.25);
+}
+
+.a11y-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.a11y-btn:focus-visible {
+  outline: 2px solid var(--primary-container);
+  outline-offset: 2px;
+}
+
+.a11y-btn-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+/* Slider de tamaño de texto */
+.a11y-slider-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.a11y-slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: rgba(248,246,239,0.6);
+}
+
+.a11y-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(248,246,239,0.15);
+  outline: none;
+  cursor: pointer;
+}
+
+.a11y-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--primary-container);
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.a11y-slider:focus-visible {
+  outline: 2px solid var(--primary-container);
+  outline-offset: 4px;
+}
+
+/* Swatch de colores daltónicos */
+.a11y-color-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.a11y-color-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 8px;
+  background: rgba(248,246,239,0.05);
+  border: 1px solid rgba(248,246,239,0.1);
+  color: rgba(248,246,239,0.8);
+  cursor: pointer;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.72rem;
+  text-align: center;
+  transition: background 0.15s;
+  width: 100%;
+}
+
+.a11y-color-btn:hover { background: rgba(248,246,239,0.12); }
+.a11y-color-btn.active { border-color: var(--primary-container); background: rgba(66,101,0,0.3); }
+.a11y-color-btn:focus-visible { outline: 2px solid var(--primary-container); outline-offset: 2px; }
+
+.a11y-swatch {
+  width: 100%;
+  height: 20px;
+  display: flex;
+  gap: 3px;
+}
+
+.a11y-swatch span {
+  flex: 1;
+  height: 100%;
+}
+
+/* Reset / guardar */
+.a11y-reset {
+  width: 100%;
+  padding: 12px;
+  background: rgba(187,0,8,0.2);
+  border: 1px solid rgba(187,0,8,0.4);
+  color: rgba(248,246,239,0.8);
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.15s;
+}
+
+.a11y-reset:hover { background: rgba(187,0,8,0.35); }
+
+/* ============================================
+   4. MODO: TEXTO GRANDE (AAA 1.4.4)
+   ============================================ */
+html.a11y-large-text {
+  font-size: 20px;
+}
+
+html.a11y-large-text .display-xl {
+  font-size: clamp(3rem, 8vw, 6.5rem);
+}
+
+html.a11y-large-text .display-lg {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+html.a11y-large-text .display-md {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+html.a11y-large-text .body-text,
+html.a11y-large-text p {
+  font-size: 1.15rem;
+  line-height: 1.9;
+}
+
+html.a11y-large-text .label-tag,
+html.a11y-large-text .nav-label {
+  font-size: 0.85rem;
+}
+
+html.a11y-large-text .topbar-nav a {
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   5. MODO: FUENTE DISLEXIA (AAA 3.1.5)
+   Usa OpenDyslexic via CDN o fallback sans
+   ============================================ */
+@import url('https://fonts.cdnfonts.com/css/opendyslexic') layer(dyslexia);
+
+html.a11y-dyslexia body,
+html.a11y-dyslexia p,
+html.a11y-dyslexia li,
+html.a11y-dyslexia span,
+html.a11y-dyslexia a {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', 'Trebuchet MS', sans-serif !important;
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.1em !important;
+  line-height: 1.9 !important;
+}
+
+html.a11y-dyslexia h1,
+html.a11y-dyslexia h2,
+html.a11y-dyslexia h3,
+html.a11y-dyslexia h4 {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* ============================================
+   6. MODO: ALTO CONTRASTE (AAA 1.4.6)
+   Ratio mínimo 7:1 para texto normal,
+   4.5:1 para texto grande
+   ============================================ */
+html.a11y-high-contrast {
+  --primary:               #00ff00;
+  --primary-container:     #00ff00;
+  --on-primary:            #000000;
+  --secondary:             #ff0000;
+  --on-secondary:          #ffffff;
+  --surface:               #000000;
+  --surface-container-low: #111111;
+  --surface-container:     #1a1a1a;
+  --surface-container-high:#222222;
+  --surface-container-highest: #2a2a2a;
+  --on-surface:            #ffffff;
+  --on-surface-variant:    #dddddd;
+  --inverse-surface:       #ffffff;
+  --outline:               #ffffff;
+  --outline-variant:       #888888;
+  --tertiary:              #ffff00;
+  --tertiary-container:    #333300;
+  --on-tertiary:           #000000;
+}
+
+html.a11y-high-contrast body {
+  background: #000000;
+  color: #ffffff;
+}
+
+html.a11y-high-contrast .topbar {
+  background: #000000;
+  outline: 2px solid #ffffff;
+}
+
+html.a11y-high-contrast .grain-overlay { display: none; }
+
+html.a11y-high-contrast img,
+html.a11y-high-contrast svg:not([aria-hidden]) {
+  filter: contrast(1.5) brightness(1.2);
+}
+
+html.a11y-high-contrast .btn-primary {
+  background: #00ff00;
+  color: #000000;
+  outline: 2px solid #ffffff;
+}
+
+html.a11y-high-contrast .btn-secondary {
+  background: #ff0000;
+  color: #ffffff;
+  outline: 2px solid #ffffff;
+}
+
+html.a11y-high-contrast .bottomnav {
+  background: #000000;
+  border-top: 2px solid #ffffff;
+}
+
+html.a11y-high-contrast *:focus-visible {
+  outline: 4px solid #ffff00 !important;
+  outline-offset: 4px !important;
+}
+
+/* ============================================
+   7. MODO: SIN MOVIMIENTO (AAA 2.3.3)
+   Respeta prefers-reduced-motion + manual
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.05ms !important;
+  scroll-behavior: auto !important;
+}
+
+html.a11y-reduce-motion .grain-overlay { display: none; }
+
+/* ============================================
+   8. MODO DALTÓNICO: DEUTERANOPIA
+   Rojo-verde. Reemplaza rojo→azul, verde→amarillo
+   ============================================ */
+html.a11y-deuteranopia {
+  --primary:           #0066cc;
+  --primary-dim:       #0052a3;
+  --primary-container: #99ccff;
+  --on-primary:        #003366;
+  --secondary:         #cc6600;
+  --secondary-dim:     #a35200;
+  --secondary-container: #ffe0b2;
+  --on-secondary:      #4d2600;
+  --tertiary:          #555555;
+  --tertiary-container:#cccccc;
+  --on-tertiary:       #222222;
+}
+
+html.a11y-deuteranopia body {
+  filter: url('#deuteranopia-filter');
+}
+
+/* ============================================
+   9. MODO DALTÓNICO: PROTANOPIA
+   Sin rojo. Verde y rojo se confunden.
+   ============================================ */
+html.a11y-protanopia {
+  --primary:           #0055aa;
+  --primary-dim:       #003d7a;
+  --primary-container: #aaccff;
+  --on-primary:        #002255;
+  --secondary:         #884400;
+  --secondary-dim:     #663300;
+  --secondary-container: #ffcc99;
+  --on-secondary:      #331a00;
+  --tertiary:          #666666;
+}
+
+html.a11y-protanopia body {
+  filter: url('#protanopia-filter');
+}
+
+/* ============================================
+   10. MODO DALTÓNICO: TRITANOPIA
+   Sin azul. Azul-amarillo difícil de distinguir.
+   ============================================ */
+html.a11y-tritanopia {
+  --primary:           #008060;
+  --primary-dim:       #006650;
+  --primary-container: #99ffdd;
+  --on-primary:        #003322;
+  --secondary:         #cc0044;
+  --secondary-dim:     #aa0033;
+  --secondary-container: #ffb3c6;
+  --on-secondary:      #660022;
+  --tertiary:          #666633;
+}
+
+html.a11y-tritanopia body {
+  filter: url('#tritanopia-filter');
+}
+
+/* ============================================
+   11. MODO: ESCALA DE GRISES TOTAL
+   ============================================ */
+html.a11y-monochrome body {
+  filter: grayscale(1) contrast(1.1);
+}
+
+html.a11y-monochrome {
+  --primary:           #333333;
+  --primary-container: #cccccc;
+  --on-primary:        #ffffff;
+  --secondary:         #555555;
+  --secondary-container:#dddddd;
+  --on-secondary:      #ffffff;
+  --tertiary:          #888888;
+}
+
+/* ============================================
+   12. MODO: FOCO DE TECLADO REFORZADO
+   ============================================ */
+html.a11y-focus-visible *:focus-visible {
+  outline: 4px solid #ff6600 !important;
+  outline-offset: 6px !important;
+  box-shadow: 0 0 0 8px rgba(255,102,0,0.3) !important;
+}
+
+/* ============================================
+   13. SVG FILTERS para simulación daltónica
+   (se inyectan invisibles en el DOM)
+   ============================================ */
+.a11y-svg-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ============================================
+   14. LÍNEA DE ESPACIADO (AAA 1.4.12)
+   Espaciado de texto accesible
+   ============================================ */
+html.a11y-large-text p,
+html.a11y-large-text li,
+html.a11y-large-text dd {
+  line-height: 2 !important;
+  letter-spacing: 0.02em !important;
+  word-spacing: 0.12em !important;
+}
+
+/* ============================================
+   15. DESCRIPCIÓN DE IMÁGENES (AAA 1.1.1)
+   Estilo para figcaption y alt visible
+   ============================================ */
+figcaption {
+  font-size: 0.8rem;
+  color: var(--on-surface-variant);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+img:not([alt]) {
+  outline: 3px solid red;
+}
+
+/* ============================================
+   16. INDICADOR DE IDIOMA visible
+   ============================================ */
+[lang]:not([lang="es"])::before {
+  content: "[" attr(lang) "] ";
+  font-size: 0.6em;
+  color: var(--on-surface-variant);
+  vertical-align: super;
+}
+
+/* ============================================
+   17. LIVE REGION para toasts (AAA 4.1.3)
+   ============================================ */
+[role="status"],
+[role="alert"],
+[aria-live] {
+  position: relative;
+}
+
+/* ============================================
+   18. CURSOR mejorado para elementos interactivos
+   ============================================ */
+button, a, [role="button"], [tabindex] {
+  cursor: pointer;
+}
+
+button:disabled, a[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ============================================
+   19. BARRA DE ACCESIBILIDAD - badge de nivel
+   ============================================ */
+.a11y-badge {
+  position: fixed;
+  bottom: 136px;
+  left: 70px;
+  z-index: 8998;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  pointer-events: none;
+}
