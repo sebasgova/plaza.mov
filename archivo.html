@@ -1,25 +1,196 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Archivo | La Plaza en Movimiento</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="archivo.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voces que Venden | La Plaza en Movimiento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="archivo.css"/>
 </head>
 <body>
+  <div class="grain-overlay"></div>
+
+  <!-- TOP NAV -->
   <header class="topbar">
-    <a href="index.html">La Plaza.mov</a>
-    <nav>
+    <a href="index.html" class="topbar-logo">La Plaza<span class="dot">.</span>mov</a>
+    <nav class="topbar-nav">
       <a href="memoria.html">Memoria</a>
-      <a href="archivo.html">Archivo</a>
+      <a href="archivo.html" class="active">Archivo</a>
       <a href="mapa.html">Mapa</a>
     </nav>
+    <div class="topbar-controls">
+      <button class="icon-btn" id="soundToggle">
+        <span class="material-symbols-outlined">volume_up</span>
+      </button>
+      <button class="icon-btn">
+        <span class="material-symbols-outlined">settings</span>
+      </button>
+    </div>
   </header>
-  <main class="archivo">
-    <h1>Voces que venden</h1>
-    <div id="vendorGrid"></div>
+
+  <main class="arc-main content-max content-pad">
+    <!-- HERO -->
+    <header class="arc-hero">
+      <div class="arc-hero-left">
+        <p class="label-tag text-secondary" style="font-size:0.9rem; letter-spacing:0.2em; margin-bottom:16px; display:block;">El Archivo Humano</p>
+        <h1 class="display-xl">VOCES QUE<br/>VENDEN</h1>
+        <p class="body-lg text-muted anim-fade-up delay-100" style="max-width:480px; margin-top:28px;">
+          Un archivo sonoro y visual que documenta la resiliencia de la economía popular. Testimonios que transforman el ruido del mercado en sabiduría colectiva.
+        </p>
+      </div>
+      <div class="arc-vol">
+        <span style="font-family:'Space Grotesk',sans-serif; font-weight:900; font-size:2.5rem; font-style:italic; color:var(--primary);">Vol. 01</span>
+        <span class="label-tag text-muted" style="font-size:0.65rem; display:block; margin-top:4px;">Pereira · 2026</span>
+      </div>
+    </header>
+
+    <!-- FEATURED DOCUMENTARY -->
+    <section class="arc-featured" data-anim>
+      <div class="arc-featured-media">
+        <div class="arc-featured-media-inner">
+          <!-- Placeholder film still SVG -->
+          <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+            <rect width="700" height="420" fill="#1a1b17"/>
+            <!-- Film grain lines -->
+            <rect x="0" y="140" width="700" height="1" fill="rgba(255,255,255,0.04)"/>
+            <rect x="0" y="280" width="700" height="1" fill="rgba(255,255,255,0.04)"/>
+            <!-- Market silhouettes -->
+            <rect x="80" y="180" width="60" height="160" fill="rgba(255,255,255,0.07)"/>
+            <rect x="160" y="200" width="80" height="140" fill="rgba(255,255,255,0.05)"/>
+            <rect x="260" y="160" width="50" height="180" fill="rgba(255,255,255,0.08)"/>
+            <rect x="340" y="190" width="100" height="150" fill="rgba(255,255,255,0.06)"/>
+            <rect x="460" y="170" width="70" height="170" fill="rgba(255,255,255,0.07)"/>
+            <rect x="550" y="200" width="90" height="140" fill="rgba(255,255,255,0.05)"/>
+            <!-- Light ray -->
+            <polygon points="350,0 200,420 500,420" fill="rgba(199,252,121,0.04)"/>
+            <!-- Text -->
+            <text x="350" y="90" font-family="Space Grotesk,sans-serif" font-weight="900" font-size="42" fill="rgba(255,255,255,0.12)" text-anchor="middle" letter-spacing="-2">PLAZA EN MOVIMIENTO</text>
+          </svg>
+          <div class="arc-featured-overlay"></div>
+          <button class="arc-play-big">
+            <span class="material-symbols-outlined icon-fill" style="font-size:40px;">play_arrow</span>
+            Ver Mini-Documental
+          </button>
+        </div>
+      </div>
+      <div class="arc-featured-info">
+        <h2 class="display-md" style="margin-bottom:20px;">El Ritmo del Pregón</h2>
+        <p class="body-text text-muted" style="margin-bottom:24px; line-height:1.8;">
+          Explora la sinfonía urbana de Pereira. Este documental de 12 minutos desglosa las técnicas de venta oral como una forma de patrimonio cultural inmaterial, trazando las rutas de los vendedores por los barrios de la ciudad.
+        </p>
+        <div class="arc-tags">
+          <span class="chip chip-green-soft">Sociología</span>
+          <span class="chip chip-green-soft">Tradición Oral</span>
+          <span class="chip chip-green-soft">Economía Popular</span>
+          <span class="chip chip-green-soft">Paisaje Sonoro</span>
+        </div>
+        <div class="arc-duration">
+          <span class="material-symbols-outlined" style="font-size:16px; color:var(--secondary);">schedule</span>
+          <span class="label-tag" style="font-size:0.65rem; color:var(--on-surface-variant);">Duración: 12:00 min</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENDOR GRID -->
+    <div class="divider-label" style="margin-top:80px; margin-bottom:40px;">
+      <div class="divider-line"></div>
+      <h3 class="headline" style="letter-spacing:0.12em;">Retratos Sonoros</h3>
+    </div>
+
+    <div class="arc-grid" id="vendorGrid">
+      <!-- Cards rendered by JS -->
+    </div>
+
+    <!-- METHODOLOGY CTA -->
+    <section class="arc-cta" data-anim>
+      <div class="arc-cta-deco"></div>
+      <div class="arc-cta-inner">
+        <span class="label-tag text-primary" style="margin-bottom:16px; display:block;">Metodología de Campo</span>
+        <p class="body-lg" style="max-width:580px; margin-bottom:32px;">
+           <span class="text-secondary" style="font-weight:900;"> </span> 
+        </p>
+        <a href="#" class="arc-cta-link">
+          Explorar el Archivo Completo
+          <span class="material-symbols-outlined" style="font-size:20px;">database</span>
+        </a>
+      </div>
+    </section>
   </main>
+
+  <!-- MINI PLAYER (floating) -->
+  <div class="mini-player" id="miniPlayer" style="opacity:0; pointer-events:none;">
+    <div class="mini-player-inner">
+      <div class="mini-player-info">
+        <p class="label-tag text-primary" style="font-size:0.6rem; line-height:1;">Reproduciendo</p>
+        <p class="body-text" style="font-size:0.82rem; font-weight:600; max-width:160px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" id="miniPlayerTitle">—</p>
+      </div>
+      <div class="mini-player-bar" id="miniPlayerBar">
+        <div class="mini-bar-fill" id="miniBarFill"></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px; margin-bottom:4px;">
+        <span style="font-size:8px; font-weight:700; font-family:'Space Grotesk',sans-serif;" id="miniCurrentTime">0:00</span>
+        <span style="font-size:8px; font-weight:700; font-family:'Space Grotesk',sans-serif; opacity:0.4;" id="miniTotalTime">—:—</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button class="icon-btn" style="width:24px;height:24px;" id="miniPrev">
+            <span class="material-symbols-outlined" style="font-size:16px;">skip_previous</span>
+          </button>
+          <button class="icon-btn" style="width:28px;height:28px; background:var(--secondary); color:white;" id="miniPlayBtn">
+            <span class="material-symbols-outlined icon-fill" style="font-size:18px;" id="miniPlayIcon">play_arrow</span>
+          </button>
+          <button class="icon-btn" style="width:24px;height:24px;" id="miniNext">
+            <span class="material-symbols-outlined" style="font-size:16px;">skip_next</span>
+          </button>
+        </div>
+        <div style="display:flex; gap:2px; align-items:flex-end; height:16px; color:var(--secondary);">
+          <div style="width:3px; height:35%; background:currentColor;"></div>
+          <div style="width:3px; height:100%; background:currentColor;"></div>
+          <div style="width:3px; height:60%; background:currentColor;"></div>
+        </div>
+      </div>
+    </div>
+    <button class="mini-close" id="miniClose">
+      <span class="material-symbols-outlined" style="font-size:16px;">close</span>
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" style="padding-bottom:80px;">
+    <div class="content-max" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;">
+      <div class="footer-logo">La Plaza en Movimiento</div>
+      <div class="footer-links">
+        <a href="#">Accesibilidad</a>
+        <a href="#">Ética de Datos</a>
+        <a href="#">Metodología</a>
+      </div>
+      <div class="footer-copy">© 2026 La Plaza en Movimiento · UCC</div>
+    </div>
+  </footer>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottomnav">
+    <a href="index.html" class="nav-btn active">
+      <span class="material-symbols-outlined icon-fill">graphic_eq</span>
+      <span class="nav-label">Inicio</span>
+    </a>
+    <a href="memoria.html" class="nav-btn">
+      <span class="material-symbols-outlined">streetview</span>
+      <span class="nav-label">Memoria</span>
+    </a>
+    <a href="archivo.html" class="nav-btn">
+      <span class="material-symbols-outlined">inventory_2</span>
+      <span class="nav-label">Archivo</span>
+    </a>
+    <a href="mapa.html" class="nav-btn">
+      <span class="material-symbols-outlined">map</span>
+      <span class="nav-label">Mapa</span>
+    </a>
+  </nav>
+
+  <script src="main.js"></script>
   <script src="archivo.js"></script>
 </body>
 </html>
