@@ -4,7 +4,7 @@ const vendedores = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-  const grid = document.getElementById('vendorGrid');
+  const grid = document.getElementById('vendorsGrid');
   grid.innerHTML = vendedores.map(v => `
     <article class="vendor-card">
       <h2>${v.nombre}</h2>
