@@ -1,37 +1,286 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Memoria | La Plaza en Movimiento</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="memoria.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="memoria.css"/>
 </head>
 <body>
+  <div class="grain-overlay"></div>
+
+  <!-- TOP NAV -->
   <header class="topbar">
-    <a href="index.html">La Plaza.mov</a>
-    <nav>
-      <a href="memoria.html">Memoria</a>
+    <a href="index.html" class="topbar-logo">La Plaza<span class="dot">.</span>mov</a>
+    <nav class="topbar-nav">
+      <a href="memoria.html" class="active">Memoria</a>
       <a href="archivo.html">Archivo</a>
       <a href="mapa.html">Mapa</a>
     </nav>
+    <div class="topbar-controls">
+      <button class="icon-btn" id="soundToggle">
+        <span class="material-symbols-outlined">volume_up</span>
+      </button>
+      <button class="icon-btn">
+        <span class="material-symbols-outlined">settings</span>
+      </button>
+    </div>
   </header>
-  <main class="memoria">
-    <h1>Memoria Viva</h1>
-    <p>El pregón como huella oral, trabajo cotidiano y presencia barrial.</p>
-  
-    <section>
-      <h2>La invisibilidad sistémica</h2>
-      <p>El vendedor ambulante está presente en la ciudad, pero muchas veces ausente en sus relatos oficiales.</p>
-    </section>
-    <section>
-      <h2>Metodología de campo</h2>
-      <ol>
-        <li>Escucha del territorio.</li>
-        <li>Registro de voces.</li>
-        <li>Archivo visual y sonoro.</li>
-      </ol>
-    </section>
+
+  <main class="mem-main content-max content-pad">
+    <!-- HERO HEADER -->
+    <header class="mem-hero">
+      <div class="mem-hero-icon">
+        <span class="material-symbols-outlined icon-fill" style="font-size:64px; color:var(--secondary);">account_tree</span>
+      </div>
+      <h1 class="display-xl text-primary anim-fade-up">
+        Memoria<br/>
+        <span class="text-secondary">Viva</span>
+      </h1>
+      <p class="body-lg anim-fade-up delay-100" style="max-width:720px; border-left:8px solid var(--secondary); padding-left:24px; margin-top:24px; background:var(--surface-container-low); padding:16px 24px;">
+        Estrategias de Diseño Social para la visibilización de los actores invisibles en las plazas y barrios de la ciudad de Pereira.
+      </p>
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <div class="mem-layout">
+      <!-- ARTICLE -->
+      <article class="mem-article">
+
+        <!-- SECTION 1 -->
+        <section class="mem-section" data-anim>
+          <div class="mem-section-title">
+            <span class="material-symbols-outlined text-primary" style="font-size:36px;">architecture</span>
+            <h2 class="display-md">La Invisibilidad Sistémica</h2>
+          </div>
+          <div class="mem-prose">
+            <p>
+              En el corazón de la plaza, el movimiento es constante. Sin embargo, detrás del bullicio de la oferta y la demanda, existe un ecosistema de saberes que la modernidad urbana ha relegado a la periferia de la conciencia social. El <strong>Diseño Social</strong> en este proyecto no actúa como una imposición estética, sino como una herramienta de excavación arqueológica de lo contemporáneo.
+            </p>
+            <p>
+              Nuestra investigación-creación aborda la "invisibilidad" no como una falta de presencia física, sino como una desconexión en la cadena de valor simbólico. Los vendedores ambulantes son los pilares de una arquitectura viva que carece de archivo. El pregón es su lenguaje, su sistema de comunicación oral heredado y transformado.
+            </p>
+          </div>
+        </section>
+
+        <div class="mem-divider"></div>
+
+        <!-- SECTION 2 - METHODS -->
+        <section class="mem-section mem-methods" data-anim>
+          <div class="mem-methods-grid">
+            <div>
+              <div class="mem-section-title">
+                <span class="material-symbols-outlined text-secondary" style="font-size:36px;">psychology</span>
+                <h3 class="display-md" style="font-size:1.8rem;">Metodología de Campo</h3>
+              </div>
+              <ol class="mem-method-list">
+                <li>
+                  <span class="method-num">01</span>
+                  <div>
+                    <strong>Cartografía Sonora:</strong> Grabaciones de ambiente que capturan el paisaje auditivo de la negociación barrial y la dinámica de la venta.
+                  </div>
+                </li>
+                <li>
+                  <span class="method-num">02</span>
+                  <div>
+                    <strong>Diálogos de Huacal:</strong> Entrevistas semi-estructuradas realizadas en los tiempos de pausa de los trabajadores, en su propio territorio.
+                  </div>
+                </li>
+                <li>
+                  <span class="method-num">03</span>
+                  <div>
+                    <strong>Co-creación Visual:</strong> Talleres donde el actor define su propia representación icónica. La imagen no es impuesta, es coconstruida.
+                  </div>
+                </li>
+                <li>
+                  <span class="method-num">04</span>
+                  <div>
+                    <strong>Archivo Digital Abierto:</strong> Repositorio de acceso libre que integra audio, texto, fotografía y geolocalización de cada vendedor.
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <!-- Image placeholder -->
+            <div class="mem-img-card" data-anim>
+              <div class="mem-img-inner">
+                <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                  <rect width="400" height="320" fill="#deddd4"/>
+                  <!-- Abstract market abstraction -->
+                  <rect x="40" y="60" width="60" height="80" fill="#2e2f2b" opacity="0.2"/>
+                  <rect x="120" y="80" width="80" height="60" fill="#2e2f2b" opacity="0.15"/>
+                  <rect x="220" y="50" width="50" height="100" fill="#2e2f2b" opacity="0.2"/>
+                  <rect x="290" y="70" width="70" height="70" fill="#2e2f2b" opacity="0.15"/>
+                  <circle cx="70" cy="220" r="30" fill="#bb0008" opacity="0.3"/>
+                  <circle cx="180" cy="230" r="22" fill="#426500" opacity="0.3"/>
+                  <circle cx="310" cy="215" r="28" fill="#6f5836" opacity="0.3"/>
+                  <line x1="0" y1="160" x2="400" y2="160" stroke="#426500" stroke-width="2" opacity="0.3"/>
+                  <text x="20" y="290" font-family="Space Grotesk,sans-serif" font-weight="900" font-size="14" fill="#2e2f2b" opacity="0.4" letter-spacing="0.1em">REGISTRO ETNOGRÁFICO</text>
+                </svg>
+              </div>
+              <div class="mem-img-label chip chip-primary">Registro 044</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CALLOUT BLOCK -->
+        <section class="mem-callout bg-wood" data-anim>
+          <div style="position:relative; z-index:1;">
+            <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+              <span class="material-symbols-outlined icon-fill" style="font-size:44px; color:var(--on-tertiary);">lightbulb</span>
+              <h2 class="display-md" style="color:var(--on-tertiary);">Innovación Social</h2>
+            </div>
+            <p class="body-lg" style="color:rgba(255,240,225,0.88); max-width:640px; margin-bottom:28px;">
+              ¿Cómo puede el diseño devolver la agencia a quienes han sido silenciados por los grandes relatos del progreso? Proponemos un sistema de "Diseño de Transición" que utiliza la memoria como combustible para el futuro económico de la plaza.
+            </p>
+            <button class="btn btn-secondary">Descargar Manifiesto</button>
+          </div>
+          <span class="callout-bg-icon material-symbols-outlined">grid_view</span>
+        </section>
+
+        <!-- MARCO CONCEPTUAL -->
+        <section class="mem-section" data-anim>
+          <div class="mem-section-title">
+            <span class="material-symbols-outlined text-primary" style="font-size:36px;">menu_book</span>
+            <h2 class="display-md">Marco Conceptual</h2>
+          </div>
+          <div class="mem-concepts">
+            <div class="concept-card" data-anim>
+              <div class="concept-num">5.1</div>
+              <h4 class="headline" style="font-size:0.95rem; margin-bottom:8px;">Diseño Social</h4>
+              <p class="body-text text-muted" style="font-size:0.85rem;">Práctica orientada a la transformación de problemáticas reales. Los vendedores son actores culturales, no solo usuarios de un servicio.</p>
+            </div>
+            <div class="concept-card" data-anim>
+              <div class="concept-num">5.3</div>
+              <h4 class="headline" style="font-size:0.95rem; margin-bottom:8px;">Narrativa Transmedia</h4>
+              <p class="body-text text-muted" style="font-size:0.85rem;">La historia no se centra en un lugar fijo, sino en el recorrido, el sonido y la interacción urbana. Cada plataforma aporta una dimensión distinta.</p>
+            </div>
+            <div class="concept-card" data-anim>
+              <div class="concept-num">5.5</div>
+              <h4 class="headline" style="font-size:0.95rem; margin-bottom:8px;">Patrimonio Sonoro</h4>
+              <p class="body-text text-muted" style="font-size:0.85rem;">El pregón como forma de patrimonio inmaterial. Expresión cultural transmitida a través de la experiencia, la oralidad y el cuerpo en movimiento.</p>
+            </div>
+            <div class="concept-card" data-anim>
+              <div class="concept-num">5.6</div>
+              <h4 class="headline" style="font-size:0.95rem; margin-bottom:8px;">La Plaza Descentralizada</h4>
+              <p class="body-text text-muted" style="font-size:0.85rem;">El intercambio cultural no ocurre en un espacio fijo, sino en un sistema móvil que se activa a través del recorrido urbano barrio a barrio.</p>
+            </div>
+          </div>
+        </section>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="mem-sidebar">
+        <div class="sidebar-card" data-anim>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
+            <span class="material-symbols-outlined text-primary">inventory_2</span>
+            <h3 class="headline" style="font-size:1.1rem;">Archivo Digital Abierto</h3>
+          </div>
+          <p class="body-text text-muted" style="font-size:0.85rem; margin-bottom:24px;">
+            Usted no es solo un espectador. El archivo se construye con voces ciudadanas. Comparta su registro, historia o audio para expandir esta memoria colectiva.
+          </p>
+
+          <div class="sidebar-form">
+            <div class="form-group">
+              <label class="form-label">Nombre / Seudónimo</label>
+              <input class="form-input" type="text" placeholder="Anónimo permitido"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tipo de Aporte</label>
+              <select class="form-input form-select">
+                <option>Relato Escrito</option>
+                <option>Fotografía Histórica</option>
+                <option>Paisaje Sonoro (MP3)</option>
+                <option>Testimonio de Pregón</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tu Mensaje</label>
+              <textarea class="form-input form-textarea" rows="4" placeholder="Cuéntanos sobre un vendedor que recuerdes..."></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%;">
+              Subir al Archivo
+            </button>
+          </div>
+
+          <!-- Recent contributions -->
+          <div class="sidebar-recent">
+            <h4 class="label-tag text-muted" style="margin-bottom:16px;">Últimas Contribuciones</h4>
+            <div class="contrib-item">
+              <div class="contrib-icon bg-secondary">
+                <span class="material-symbols-outlined" style="color:white;font-size:20px;">mic</span>
+              </div>
+              <div>
+                <p class="body-text" style="font-size:0.85rem; font-weight:600;">Pregonero de Galería</p>
+                <p class="label-tag text-muted" style="font-size:0.65rem;">Hace 2 horas</p>
+              </div>
+            </div>
+            <div class="contrib-item">
+              <div class="contrib-icon bg-tertiary">
+                <span class="material-symbols-outlined" style="color:white;font-size:20px;">image</span>
+              </div>
+              <div>
+                <p class="body-text" style="font-size:0.85rem; font-weight:600;">Mercado Cuba 1985</p>
+                <p class="label-tag text-muted" style="font-size:0.65rem;">Hace 5 horas</p>
+              </div>
+            </div>
+            <div class="contrib-item">
+              <div class="contrib-icon" style="background:var(--primary);">
+                <span class="material-symbols-outlined" style="color:var(--on-primary);font-size:20px;">description</span>
+              </div>
+              <div>
+                <p class="body-text" style="font-size:0.85rem; font-weight:600;">Relato: Don Alirio</p>
+                <p class="label-tag text-muted" style="font-size:0.65rem;">Hace 1 día</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
   </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" style="margin-top:0;">
+    <div class="content-max" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;">
+      <div class="footer-logo">La Plaza en Movimiento</div>
+      <div class="footer-links">
+        <a href="#">Accesibilidad</a>
+        <a href="#">Ética de Datos</a>
+        <a href="#">Metodología</a>
+      </div>
+      <div class="footer-copy">© 2026 La Plaza en Movimiento · Universidad Cooperativa de Colombia</div>
+    </div>
+  </footer>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottomnav">
+    <a href="index.html" class="nav-btn">
+      <span class="material-symbols-outlined">graphic_eq</span>
+      <span class="nav-label">Inicio</span>
+    </a>
+    <a href="memoria.html" class="nav-btn active">
+      <span class="material-symbols-outlined icon-fill">streetview</span>
+      <span class="nav-label">Memoria</span>
+    </a>
+    <a href="archivo.html" class="nav-btn">
+      <span class="material-symbols-outlined">inventory_2</span>
+      <span class="nav-label">Archivo</span>
+    </a>
+    <a href="mapa.html" class="nav-btn">
+      <span class="material-symbols-outlined">map</span>
+      <span class="nav-label">Mapa</span>
+    </a>
+  </nav>
+
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initPageAnimations();
+      initSoundToggle('soundToggle');
+    });
+  </script>
 </body>
 </html>
