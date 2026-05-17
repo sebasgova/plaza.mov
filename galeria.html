@@ -1,24 +1,432 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galería | La Plaza en Movimiento</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="galeria.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galería la 40 | La Plaza en Movimiento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="galeria.css"/>
 </head>
 <body>
+  <div class="grain-overlay"></div>
+
+  <!-- TOP NAV -->
   <header class="topbar">
-    <a href="index.html">La Plaza.mov</a>
-    <nav>
+    <a href="index.html" class="topbar-logo">La Plaza<span class="dot">.</span>mov</a>
+    <nav class="topbar-nav">
       <a href="memoria.html">Memoria</a>
       <a href="archivo.html">Archivo</a>
       <a href="mapa.html">Mapa</a>
     </nav>
+    <div class="topbar-controls">
+      <button class="icon-btn" id="soundToggle">
+        <span class="material-symbols-outlined">volume_up</span>
+      </button>
+      <button class="icon-btn" onclick="history.back()">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </button>
+    </div>
   </header>
-  <main class="galeria">
-    <h1>Galería La 40</h1>
-    <p>Nodo de encuentro, trabajo popular y memoria cotidiana.</p>
-  </main>
+
+  <!-- HERO FULL BLEED -->
+  <section class="gal-hero">
+    <div class="gal-hero-bg">
+      <!-- SVG abstracto del mercado -->
+      <svg viewBox="0 0 1440 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
+        <rect width="1440" height="700" fill="#0e0f0b"/>
+        <!-- Estructura de puestos de mercado -->
+        <rect x="0"   y="200" width="180" height="500" fill="#1a1b17"/>
+        <rect x="200" y="150" width="160" height="550" fill="#161712"/>
+        <rect x="380" y="180" width="200" height="520" fill="#1a1b17"/>
+        <rect x="600" y="120" width="180" height="580" fill="#141510"/>
+        <rect x="800" y="160" width="220" height="540" fill="#1a1b17"/>
+        <rect x="1040" y="140" width="180" height="560" fill="#161712"/>
+        <rect x="1240" y="170" width="200" height="530" fill="#1a1b17"/>
+        <!-- Techo corrugado -->
+        <path d="M0,180 Q90,140 180,180 Q270,220 360,180 Q450,140 540,180 Q630,220 720,180 Q810,140 900,180 Q990,220 1080,180 Q1170,140 1260,180 Q1350,220 1440,180 L1440,0 L0,0 Z" fill="#d4af37" opacity="0.08"/>
+        <!-- Luz cenital -->
+        <ellipse cx="720" cy="0" rx="400" ry="300" fill="rgba(212,175,55,0.06)"/>
+        <!-- Productos: círculos de colores (frutas, verduras) -->
+        <circle cx="90"  cy="380" r="40" fill="#426500" opacity="0.35"/>
+        <circle cx="160" cy="400" r="30" fill="#bb0008" opacity="0.3"/>
+        <circle cx="290" cy="360" r="50" fill="#6f5836" opacity="0.25"/>
+        <circle cx="490" cy="390" r="35" fill="#426500" opacity="0.4"/>
+        <circle cx="700" cy="370" r="45" fill="#bb0008" opacity="0.3"/>
+        <circle cx="910" cy="400" r="38" fill="#426500" opacity="0.35"/>
+        <circle cx="1100" cy="380" r="42" fill="#6f5836" opacity="0.28"/>
+        <circle cx="1320" cy="390" r="36" fill="#bb0008" opacity="0.3"/>
+        <!-- Líneas de flujo (caminos dentro del mercado) -->
+        <line x1="180" y1="700" x2="720" y2="300" stroke="#d4af37" stroke-width="1" opacity="0.12" stroke-dasharray="12,8"/>
+        <line x1="1260" y1="700" x2="720" y2="300" stroke="#d4af37" stroke-width="1" opacity="0.12" stroke-dasharray="12,8"/>
+        <line x1="720" y1="700" x2="720" y2="200" stroke="#d4af37" stroke-width="1.5" opacity="0.1"/>
+        <!-- Grid de puntos -->
+        <pattern id="gdots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.04)"/>
+        </pattern>
+        <rect width="1440" height="700" fill="url(#gdots)"/>
+      </svg>
+    </div>
+
+    <div class="gal-hero-content">
+      <!-- Breadcrumb -->
+      <div class="gal-breadcrumb">
+        <a href="mapa.html" class="gal-breadcrumb-link">
+          <span class="material-symbols-outlined" style="font-size:14px;">map</span>
+          Caminografía
+        </a>
+        <span style="opacity:0.4;">→</span>
+        <span>Galería la 40</span>
+      </div>
+
+      <div class="gal-hero-badge">
+        <div class="gold-pulse-ring"></div>
+        <div class="gold-dot"></div>
+        <span class="label-tag" style="color:#d4af37; font-size:0.65rem; letter-spacing:0.18em;">Nodo central del ecosistema</span>
+      </div>
+
+      <h1 class="gal-hero-title">
+        Galería<br/>
+        <span class="gal-title-gold">la 40</span>
+      </h1>
+
+      <p class="gal-hero-sub">
+        El corazón que late antes del amanecer. Donde el campo llega a la ciudad y la ciudad sale a los barrios.
+      </p>
+
+      <div class="gal-hero-coords">
+        4.8142° N · 75.7129° W · Pereira, Risaralda
+      </div>
+    </div>
+
+    <!-- Dato destacado flotante -->
+    <div class="gal-stat-card">
+      <div class="gal-stat-card-row">
+        <span class="material-symbols-outlined icon-fill" style="color:#d4af37; font-size:20px;">trending_up</span>
+        <span class="label-tag" style="font-size:0.6rem; opacity:0.6;">Impacto diario</span>
+      </div>
+      <div class="gal-stat-card-num">+3.000</div>
+      <div class="gal-stat-card-label">personas dependen de este circuito cada día</div>
+    </div>
+  </section>
+
+  <!-- INTRO SECTION -->
+  <section class="gal-intro content-max content-pad">
+    <div class="gal-intro-grid">
+      <div class="gal-intro-text" data-anim>
+        <span class="chip chip-secondary" style="margin-bottom:20px; display:inline-block;">¿Qué es la Galería la 40?</span>
+        <h2 class="display-lg" style="margin-bottom:28px;">El origen de todo</h2>
+        <p class="body-lg text-muted" style="margin-bottom:20px;">
+          La Galería la 40 no es solo un mercado. Es el punto de partida de una cadena económica que conecta el campo con la mesa de miles de familias pereiranas. Cada madrugada, campesinos de los municipios cercanos —Marsella, Belén de Umbría, Santa Rosa, Santuario— llegan cargados de producto fresco.
+        </p>
+        <p class="body-lg text-muted">
+          Lo que para muchos es solo un mercado ruidoso, es en realidad el <strong>sistema nervioso de la economía popular de Pereira</strong>: un lugar donde se negocia en voz, se pacta con un apretón de manos y se sostiene la vida de cientos de familias tanto rurales como urbanas.
+        </p>
+      </div>
+
+      <!-- Diagrama de flujo del ecosistema -->
+      <div class="gal-flow-diagram" data-anim>
+        <div class="flow-title label-tag" style="font-size:0.65rem; letter-spacing:0.14em; opacity:0.6; margin-bottom:20px; display:block;">El circuito económico</div>
+        <div class="flow-nodes">
+
+          <div class="flow-node flow-node-top">
+            <div class="flow-icon" style="background:var(--tertiary);">
+              <span class="material-symbols-outlined icon-fill" style="color:white; font-size:22px;">agriculture</span>
+            </div>
+            <div class="flow-node-label">Campesino</div>
+            <div class="flow-node-sub">Municipios vecinos</div>
+          </div>
+
+          <div class="flow-arrow-down">
+            <div class="flow-arrow-line"></div>
+            <div class="flow-arrow-tip">▼</div>
+          </div>
+
+          <div class="flow-node flow-node-center">
+            <div class="flow-icon flow-icon-gold">
+              <span class="material-symbols-outlined icon-fill" style="color:#0e0f0b; font-size:26px;">store</span>
+            </div>
+            <div class="flow-node-label" style="color:#d4af37;">Galería la 40</div>
+            <div class="flow-node-sub">Nodo central · 4AM–12PM</div>
+          </div>
+
+          <div class="flow-split">
+            <div class="flow-split-line-left"></div>
+            <div class="flow-split-line-right"></div>
+          </div>
+
+          <div class="flow-bottom-row">
+            <div class="flow-node flow-node-bottom">
+              <div class="flow-icon" style="background:var(--secondary);">
+                <span class="material-symbols-outlined icon-fill" style="color:white; font-size:20px;">shopping_cart</span>
+              </div>
+              <div class="flow-node-label" style="font-size:0.75rem;">Vendedor Ambulante</div>
+              <div class="flow-node-sub">Surte su carreta</div>
+            </div>
+
+            <div class="flow-node flow-node-bottom">
+              <div class="flow-icon" style="background:var(--primary);">
+                <span class="material-symbols-outlined icon-fill" style="color:var(--on-primary); font-size:20px;">restaurant</span>
+              </div>
+              <div class="flow-node-label" style="font-size:0.75rem;">Restaurante / Familia</div>
+              <div class="flow-node-sub">Consumidor directo</div>
+            </div>
+          </div>
+
+          <div class="flow-final-arrow">▼</div>
+
+          <div class="flow-node flow-node-final">
+            <div class="flow-icon" style="background:var(--inverse-surface);">
+              <span class="material-symbols-outlined icon-fill" style="color:var(--primary-container); font-size:20px;">location_city</span>
+            </div>
+            <div class="flow-node-label" style="font-size:0.75rem;">Los barrios de Pereira</div>
+            <div class="flow-node-sub">El campo llega a la puerta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRES PILARES -->
+  <section class="gal-pillars" data-anim>
+    <div class="content-max content-pad">
+      <div class="divider-label" style="margin-bottom:48px;">
+        <div class="divider-line"></div>
+        <h3 class="headline" style="letter-spacing:0.12em;">Por qué importa</h3>
+      </div>
+
+      <div class="pillars-grid">
+
+        <div class="pillar-card pillar-campo">
+          <div class="pillar-num">01</div>
+          <div class="pillar-icon">
+            <span class="material-symbols-outlined icon-fill" style="font-size:36px; color:var(--tertiary);">agriculture</span>
+          </div>
+          <h3 class="pillar-title">El campesino tiene a quién venderle</h3>
+          <p class="pillar-body">
+            Sin la Galería, el campesino depende de intermediarios que absorben hasta el 60% del valor del producto. Aquí vende directo, a precio justo, sin cadena que lo asfixie. Es el único lugar donde el trabajo del campo recibe su valor real.
+          </p>
+          <div class="pillar-dato">
+            <span class="pillar-dato-num">40+</span>
+            <span class="pillar-dato-label">municipios representados en sus puestos</span>
+          </div>
+        </div>
+
+        <div class="pillar-card pillar-vendedor">
+          <div class="pillar-num">02</div>
+          <div class="pillar-icon">
+            <span class="material-symbols-outlined icon-fill" style="font-size:36px; color:var(--secondary);">directions_walk</span>
+          </div>
+          <h3 class="pillar-title">El vendedor ambulante surte su carreta</h3>
+          <p class="pillar-body">
+            Don Alirio, Maricela, Hernán y los Hermanos Carabalí empiezan su día aquí. A las 4 o 5 de la mañana, antes de que los barrios despierten, ya están seleccionando el producto que venderán. La Galería es su bodega, su proveedor y su punto de encuentro.
+          </p>
+          <div class="pillar-dato">
+            <span class="pillar-dato-num">5AM</span>
+            <span class="pillar-dato-label">hora en que los vendedores ambulantes ya están aquí</span>
+          </div>
+        </div>
+
+        <div class="pillar-card pillar-ciudad">
+          <div class="pillar-num">03</div>
+          <div class="pillar-icon">
+            <span class="material-symbols-outlined icon-fill" style="font-size:36px; color:var(--primary);">location_city</span>
+          </div>
+          <h3 class="pillar-title">La ciudad come gracias a este circuito</h3>
+          <p class="pillar-body">
+            El precio del tomate en el barrio Cuba, el aguacate en Álamos, el mango biche en Providencia — todos pasan primero por la Galería. Es el regulador de precios más democrático que tiene Pereira, sin algoritmos ni plataformas de por medio.
+          </p>
+          <div class="pillar-dato">
+            <span class="pillar-dato-num">70%</span>
+            <span class="pillar-dato-label">de la canasta familiar popular circula por mercados informales</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NARRATIVA: UNA MAÑANA TÍPICA -->
+  <section class="gal-morning content-max content-pad" data-anim>
+    <div class="gal-morning-grid">
+      <!-- Timeline -->
+      <div class="morning-timeline">
+        <h2 class="display-md" style="margin-bottom:40px;">Una mañana en la Galería</h2>
+
+        <div class="timeline-item">
+          <div class="timeline-time">3:00 AM</div>
+          <div class="timeline-dot" style="background:var(--tertiary);"></div>
+          <div class="timeline-content">
+            <h4 class="timeline-title">Los camiones del campo llegan</h4>
+            <p class="timeline-body">Los campesinos de Marsella, Belén de Umbría y Santa Rosa descargan en la oscuridad. Plátano, yuca, aguacate, tomate, fríjol. El olor del campo toma la calle antes del amanecer.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">4:30 AM</div>
+          <div class="timeline-dot" style="background:#d4af37;"></div>
+          <div class="timeline-content">
+            <h4 class="timeline-title">Los vendedores ambulantes seleccionan</h4>
+            <p class="timeline-body">Don Alirio escoge las hojas de bijao para sus tamales. Maricela elige las papayuelas más maduras. Hernán busca los mangos biche perfectos. Cada uno conoce a sus proveedores de años.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">5:30 AM</div>
+          <div class="timeline-dot" style="background:var(--secondary);"></div>
+          <div class="timeline-content">
+            <h4 class="timeline-title">La negociación directa</h4>
+            <p class="timeline-body">No hay código de barras ni pantallas. El precio se negocia en voz, con la mano en el producto. Un apretón cierra el trato. Esta es la economía de la confianza construida durante décadas.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">6:00 AM</div>
+          <div class="timeline-dot" style="background:var(--primary);"></div>
+          <div class="timeline-content">
+            <h4 class="timeline-title">Las carretas salen a los barrios</h4>
+            <p class="timeline-body">Cargados, los vendedores parten en distintas direcciones. Lo que era campo hace tres horas, ahora es el pregón que despierta los vecindarios de Pereira. El circuito se completa.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">12:00 PM</div>
+          <div class="timeline-dot" style="background:var(--on-surface-variant);"></div>
+          <div class="timeline-content">
+            <h4 class="timeline-title">La Galería descansa</h4>
+            <p class="timeline-body">El mercado cierra. Pero el ciclo ya está en marcha. Mañana vuelve a empezar a las 3AM. Así, todos los días, desde hace décadas.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quote callout -->
+      <div class="morning-callout bg-wood">
+        <span class="material-symbols-outlined icon-fill" style="font-size:48px; color:rgba(255,240,225,0.3); margin-bottom:20px; display:block;">format_quote</span>
+        <blockquote class="morning-quote">
+          "Aquí no hay intermediario. El campesino me vende a mí, yo le vendo al barrio. Ese es el negocio honesto. El supermercado rompe esa cadena y todo el mundo pierde."
+        </blockquote>
+        <div class="morning-quote-attr">
+          — Maricela, vendedora de papayuelas<br/>
+          <span style="opacity:0.5; font-size:0.75rem;">14 años recorriendo el centro de Pereira</span>
+        </div>
+
+        <div class="morning-callout-stats">
+          <div class="mcstat">
+            <span class="mcstat-num">6h</span>
+            <span class="mcstat-label">De madrugada a barrio</span>
+          </div>
+          <div class="mcstat-div"></div>
+          <div class="mcstat">
+            <span class="mcstat-num">0</span>
+            <span class="mcstat-label">Intermediarios</span>
+          </div>
+          <div class="mcstat-div"></div>
+          <div class="mcstat">
+            <span class="mcstat-num">∞</span>
+            <span class="mcstat-label">Años de tradición</span>
+          </div>
+        </div>
+
+        <a href="archivo.html" class="btn btn-secondary" style="margin-top:28px; width:100%; justify-content:center;">
+          <span class="material-symbols-outlined" style="font-size:18px;">graphic_eq</span>
+          Escuchar a los vendedores
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENAZAS Y CONCIENCIA -->
+  <section class="gal-threat" data-anim>
+    <div class="content-max content-pad">
+      <div class="gal-threat-grid">
+        <div>
+          <span class="chip chip-secondary" style="margin-bottom:20px; display:inline-block;">Por qué esto puede desaparecer</span>
+          <h2 class="display-md" style="margin-bottom:24px; max-width:500px;">Un ecosistema bajo presión</h2>
+          <p class="body-lg text-muted" style="max-width:560px; margin-bottom:32px;">
+            Los supermercados de cadena, las plataformas de domicilios y la formalización forzada del espacio público están erosionando este circuito. Cuando un vendedor ambulante desaparece, no solo se pierde un oficio: se rompe la conexión entre el campo y el barrio.
+          </p>
+          <div class="threat-items">
+            <div class="threat-item">
+              <span class="material-symbols-outlined" style="color:var(--secondary); font-size:20px;">warning</span>
+              <p>La regulación del espacio público presiona a los vendedores a desaparecer de las calles.</p>
+            </div>
+            <div class="threat-item">
+              <span class="material-symbols-outlined" style="color:var(--secondary); font-size:20px;">warning</span>
+              <p>Las plataformas de delivery omiten el mercado local y encarecen los productos de la canasta básica.</p>
+            </div>
+            <div class="threat-item">
+              <span class="material-symbols-outlined" style="color:var(--secondary); font-size:20px;">warning</span>
+              <p>Sin compradores locales, los campesinos pierden su único canal de venta directa.</p>
+            </div>
+            <div class="threat-item">
+              <span class="material-symbols-outlined" style="color:var(--secondary); font-size:20px;">warning</span>
+              <p>El pregón —patrimonio sonoro vivo— se extingue junto con el oficio que lo sostiene.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="threat-callout-right">
+          <div class="threat-big-quote">
+            "Reconocer este circuito es la primera forma de protegerlo."
+          </div>
+          <p class="body-text text-muted" style="margin-top:16px; font-size:0.9rem;">
+            Este proyecto de investigación-creación existe para visibilizar lo que la ciudad da por sentado: que la comida llegue al barrio antes del desayuno no es magia. Es el trabajo silencioso de campesinos, galeristas y vendedores ambulantes que operan desde las 3 de la mañana.
+          </p>
+          <div style="margin-top:28px; display:flex; gap:16px; flex-wrap:wrap;">
+            <a href="memoria.html" class="btn btn-primary">
+              <span class="material-symbols-outlined" style="font-size:18px;">menu_book</span>
+              Leer la investigación
+            </a>
+            <a href="mapa.html" class="btn btn-outline">
+              <span class="material-symbols-outlined" style="font-size:18px;">map</span>
+              Ver el mapa
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" style="padding-bottom:80px;">
+    <div class="content-max" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;">
+      <div class="footer-logo">La Plaza en Movimiento</div>
+      <div class="footer-links">
+        <a href="memoria.html">Memoria</a>
+        <a href="archivo.html">Archivo</a>
+        <a href="mapa.html">Mapa</a>
+      </div>
+      <div class="footer-copy">© 2026 La Plaza en Movimiento · Universidad Cooperativa de Colombia</div>
+    </div>
+  </footer>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottomnav">
+    <a href="index.html" class="nav-btn">
+      <span class="material-symbols-outlined">graphic_eq</span>
+      <span class="nav-label">Inicio</span>
+    </a>
+    <a href="memoria.html" class="nav-btn">
+      <span class="material-symbols-outlined">streetview</span>
+      <span class="nav-label">Memoria</span>
+    </a>
+    <a href="archivo.html" class="nav-btn">
+      <span class="material-symbols-outlined">inventory_2</span>
+      <span class="nav-label">Archivo</span>
+    </a>
+    <a href="mapa.html" class="nav-btn active">
+      <span class="material-symbols-outlined icon-fill">map</span>
+      <span class="nav-label">Mapa</span>
+    </a>
+  </nav>
+
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initPageAnimations();
+      initSoundToggle('soundToggle');
+    });
+  </script>
 </body>
 </html>
