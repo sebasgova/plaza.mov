@@ -1,0 +1,16 @@
+.memoria {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.memoria h1 {
+  font-size: clamp(3rem, 10vw, 7rem);
+  color: var(--primary);
+  margin: 0 0 24px;
+}
+
+.memoria p {
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
