@@ -1,0 +1,12 @@
+.galeria {
+  min-height: 80vh;
+  display: grid;
+  place-content: center;
+  padding: 80px 24px;
+  background: linear-gradient(135deg, rgba(66,101,0,.14), rgba(187,0,8,.08));
+}
+
+.galeria h1 {
+  font-size: clamp(3rem, 10vw, 8rem);
+  margin: 0;
+}
