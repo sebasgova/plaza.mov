@@ -1,0 +1,16 @@
+:root {
+  --primary: #426500;
+  --secondary: #bb0008;
+  --surface: #f8f6ef;
+  --text: #1d1d1b;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--surface);
+  color: var(--text);
+}
+
+a { color: inherit; }
