@@ -1,27 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapa | La Plaza en Movimiento</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="mapa.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Caminografía | La Plaza en Movimiento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="mapa.css"/>
 </head>
-<body>
+<body style="overflow:hidden;">
+  <div class="grain-overlay"></div>
+
+  <!-- TOP NAV -->
   <header class="topbar">
-    <a href="index.html">La Plaza.mov</a>
-    <nav>
+    <a href="index.html" class="topbar-logo">La Plaza<span class="dot">.</span>mov</a>
+    <nav class="topbar-nav">
       <a href="memoria.html">Memoria</a>
       <a href="archivo.html">Archivo</a>
-      <a href="mapa.html">Mapa</a>
+      <a href="mapa.html" class="active">Mapa</a>
     </nav>
+    <div class="topbar-controls">
+      <button class="icon-btn" id="soundToggle">
+        <span class="material-symbols-outlined">volume_up</span>
+      </button>
+      <button class="icon-btn">
+        <span class="material-symbols-outlined">filter_list</span>
+      </button>
+    </div>
   </header>
-  <main class="mapa-page">
-    <h1>Mapa sonoro</h1>
-    <div id="map"></div>
-  </main>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- COORDINATES -->
+  <div class="map-coords" id="coords">
+    4.8133° N, 75.6961° W<br/>
+    ARCHIVO COLECTIVO v.2.4<br/>
+    <span id="liveCoords">———</span>
+  </div>
+
+  <!-- VENDOR COUNTER -->
+  <div class="vendor-counter">
+    <div class="counter-dot"></div>
+    <span>5 vendedores documentados</span>
+  </div>
+
+  <!-- MAP -->
+  <div id="map"></div>
+
+  <!-- STENCIL -->
+  <div class="stencil-map-label">PEREIRA</div>
+
+  <!-- DETAIL PANEL -->
+  <div class="detail-panel" id="detailPanel">
+    <div class="panel-head">
+      <div>
+        <div class="chip chip-primary" id="panelTag" style="margin-bottom:8px;">Activo</div>
+        <div class="panel-title" id="panelTitle">—</div>
+      </div>
+      <button class="icon-btn" id="panelClose" style="flex-shrink:0;">
+        <span class="material-symbols-outlined" style="font-size:20px;">close</span>
+      </button>
+    </div>
+    <div class="panel-meta-row">
+      <span class="panel-meta-item">
+        <span class="material-symbols-outlined" style="font-size:13px;">schedule</span>
+        <span id="panelHorario">—</span>
+      </span>
+      <span class="panel-meta-item">
+        <span class="material-symbols-outlined" style="font-size:13px;">location_on</span>
+        <span id="panelZona">—</span>
+      </span>
+    </div>
+    <div class="panel-body-inner">
+      <p class="panel-desc" id="panelDesc">—</p>
+      <blockquote class="panel-quote" id="panelQuote">—</blockquote>
+      <div class="audio-player">
+        <button class="play-btn" id="playBtn">
+          <span class="material-symbols-outlined" id="playIcon">play_arrow</span>
+        </button>
+        <div style="flex:1;">
+          <div class="track-bar" id="trackBar">
+            <div class="track-fill" id="trackFill"></div>
+          </div>
+          <div class="track-times">
+            <span id="currentTime">0:00</span>
+            <span id="totalTime" style="opacity:0.4;">—:—</span>
+          </div>
+        </div>
+        <span class="material-symbols-outlined" style="color:var(--on-surface-variant); font-size:18px;">graphic_eq</span>
+      </div>
+      <a href="archivo.html" class="panel-link">
+        Ver perfil completo
+        <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <footer class="bottomnav">
+    <a href="index.html" class="nav-btn">
+      <span class="material-symbols-outlined">graphic_eq</span>
+      <span class="nav-label">Inicio</span>
+    </a>
+    <a href="memoria.html" class="nav-btn">
+      <span class="material-symbols-outlined">streetview</span>
+      <span class="nav-label">Memoria</span>
+    </a>
+    <a href="archivo.html" class="nav-btn">
+      <span class="material-symbols-outlined">inventory_2</span>
+      <span class="nav-label">Archivo</span>
+    </a>
+    <a href="mapa.html" class="nav-btn active">
+      <span class="material-symbols-outlined icon-fill">map</span>
+      <span class="nav-label">Mapa</span>
+    </a>
+  </footer>
+
+  <script src="main.js"></script>
   <script src="mapa.js"></script>
 </body>
 </html>
