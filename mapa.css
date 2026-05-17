@@ -1,0 +1,9 @@
+.mapa-page {
+  padding: 80px 24px;
+}
+
+#map {
+  width: 100%;
+  min-height: 70vh;
+  border: 4px solid var(--primary);
+}
