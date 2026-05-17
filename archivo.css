@@ -1,0 +1,17 @@
+.archivo {
+  padding: 80px 24px;
+}
+
+#vendorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 32px auto 0;
+}
+
+.vendor-card {
+  padding: 24px;
+  border: 1px solid rgba(0,0,0,.16);
+  background: white;
+}
